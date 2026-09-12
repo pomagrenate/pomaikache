@@ -19,7 +19,7 @@ WORKDIR /app
 COPY . .
 
 # Build submodules (palloc & liburing) and pomaikache binary
-RUN make submodules && make clean && make -j$(nproc)
+RUN make all
 
 # Lightweight runtime container
 FROM ubuntu:22.04 AS runner
