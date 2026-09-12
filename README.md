@@ -5,6 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
 [![C Standard](https://img.shields.io/badge/C-C99%2FC11-00599C?logo=c)](https://en.wikipedia.org/wiki/C99)
 [![SIMD Acceleration](https://img.shields.io/badge/Hardware-AVX2%2F512%20FMA-FF6F00)](https://en.wikipedia.org/wiki/Advanced_Vector_Extensions)
+[![Benchmark Spec](https://img.shields.io/badge/Benchmark-Methodology-purple.svg)](BENCHMARK_METHODOLOGY.md)
 
 **Pomaikache** is an ultra-low-latency, enterprise-grade in-memory **vector cache engine** written in pure C99/C11. Designed specifically for hyperscale AI vector search, real-time RAG (Retrieval-Augmented Generation) caching, and high-frequency vector similarity retrieval, Pomaikache delivers sub-microsecond vector operations by bypassing standard operating system overhead.
 
