@@ -25,6 +25,13 @@
 #include <unistd.h>
 #include <immintrin.h>
 
+#ifndef BLOCK_URING_CMD_DISCARD
+#define BLOCK_URING_CMD_DISCARD 0
+#endif
+#ifndef BLOCK_URING_CMD_ZONE_RESET_ALL
+#define BLOCK_URING_CMD_ZONE_RESET_ALL 1
+#endif
+
 #include "../palloc/include/palloc.h"
 #include "../liburing/src/include/liburing.h"
 

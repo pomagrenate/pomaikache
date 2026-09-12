@@ -64,10 +64,10 @@ bin/test_suite: src/pomaikache.o src/test_suite.o
 clean:
 	rm -rf $(OBJS) src/test_suite.o tests/*.o bin/pomaikache bin/test_*
 
-bench: $(TARGET)
+bench: submodules $(TARGET)
 	./$(TARGET) --bench
 
-test: $(TEST_BINS)
+test: submodules $(TEST_BINS)
 	./bin/test_math
 	./bin/test_ring_eviction
 	./bin/test_memory_alignment
