@@ -17,6 +17,7 @@ submodules:
 	fi
 	@if [ ! -f palloc/build/libpalloc.a ]; then \
 		echo "Building palloc..."; \
+		rm -rf palloc/build; \
 		cmake -B palloc/build -S palloc -DPA_BUILD_TESTS=OFF -DPA_BUILD_SHARED=OFF; \
 		cmake --build palloc/build -j$(shell nproc); \
 	fi
@@ -62,7 +63,7 @@ bin/test_suite: src/pomaikache.o src/test_suite.o
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	rm -rf $(OBJS) src/test_suite.o tests/*.o bin/pomaikache bin/test_*
+	rm -rf $(OBJS) src/test_suite.o tests/*.o bin/pomaikache bin/test_* palloc/build
 
 bench: submodules $(TARGET)
 	./$(TARGET) --bench
