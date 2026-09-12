@@ -22,21 +22,21 @@ os.makedirs(artifact_dir, exist_ok=True)
 fig, ax = plt.subplots(figsize=(9, 5.5), facecolor=fig_color)
 ax.set_facecolor(card_color)
 
-systems = ['Redis 7.2\n(RediSearch)', 'Dragonfly 1.14\n(Key-Value)', 'Pomaikache 1.0\n(Ring Buffer)', 'Pomaikache 1.0\n(16-Thr Stress)']
-throughputs = [85000, 450000, 3851433, 1535783]
-colors = [accent_orange, accent_purple, accent_green, accent_cyan]
+systems = ['Redis 7.2\n(RediSearch)', 'Dragonfly 1.14\n(Key-Value)', 'Pomaikache 1.0\n(16-Thr Stress)', 'Pomaikache 1.0\n(Ring Buffer)']
+throughputs = [85000, 450000, 1199798, 5919415]
+colors = [accent_orange, accent_purple, accent_cyan, accent_green]
 
 bars = ax.bar(systems, throughputs, color=colors, width=0.55, edgecolor='#30363D', linewidth=1.5)
 
 for bar in bars:
     yval = bar.get_height()
-    ax.text(bar.get_x() + bar.get_width()/2.0, yval + 50000, f'{yval:,.0f} ops/s',
+    ax.text(bar.get_x() + bar.get_width()/2.0, yval + 70000, f'{yval:,.0f} ops/s',
             ha='center', va='bottom', color=text_color, fontweight='bold', fontsize=10)
 
-ax.set_title('Ingestion & Processing Throughput (Ops / Sec)', fontsize=14, fontweight='bold', pad=15, color='#F0F6FC')
+ax.set_title('Live Ingestion & Processing Throughput (Ops / Sec)', fontsize=14, fontweight='bold', pad=15, color='#F0F6FC')
 ax.set_ylabel('Operations Per Second (Ops/sec)', fontsize=11, color=text_color)
 ax.grid(axis='y', linestyle='--', alpha=0.3, color='#30363D')
-ax.set_ylim(0, 4500000)
+ax.set_ylim(0, 6800000)
 ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
 
@@ -47,25 +47,25 @@ plt.savefig(os.path.join(artifact_dir, 'chart_throughput.png'), dpi=300)
 plt.close()
 
 # -----------------------------------------------------------------------------
-# Chart 2: Microsecond Tail Latency Percentiles (p50, p95, p99, p99.9)
+# Chart 2: Microsecond Tail Latency Percentiles (p50, p95, p99)
 # -----------------------------------------------------------------------------
 fig, ax = plt.subplots(figsize=(9, 5.5), facecolor=fig_color)
 ax.set_facecolor(card_color)
 
-percentiles = ['p50 (Median)', 'p95 (Tail)', 'p99 (High Tail)', 'p99.9 (Strict)']
-latencies_us = [1275.93, 3284.55, 6586.14, 11211.55]
+percentiles = ['p50 (Median)', 'p95 (Tail)', 'p99 (High Tail)']
+latencies_us = [1537.07, 2928.98, 12607.11]
 
-bars = ax.bar(percentiles, latencies_us, color=[accent_cyan, accent_green, accent_orange, '#F85149'], width=0.5, edgecolor='#30363D', linewidth=1.5)
+bars = ax.bar(percentiles, latencies_us, color=[accent_cyan, accent_green, accent_orange], width=0.5, edgecolor='#30363D', linewidth=1.5)
 
 for bar in bars:
     yval = bar.get_height()
     ax.text(bar.get_x() + bar.get_width()/2.0, yval + 200, f'{yval:,.2f} µs',
             ha='center', va='bottom', color=text_color, fontweight='bold', fontsize=10)
 
-ax.set_title('Pomaikache Vector Search Tail Latency Profile (µs)', fontsize=14, fontweight='bold', pad=15, color='#F0F6FC')
+ax.set_title('Live Pomaikache Vector Search Tail Latency Profile (µs)', fontsize=14, fontweight='bold', pad=15, color='#F0F6FC')
 ax.set_ylabel('Latency in Microseconds (µs)', fontsize=11, color=text_color)
 ax.grid(axis='y', linestyle='--', alpha=0.3, color='#30363D')
-ax.set_ylim(0, 13000)
+ax.set_ylim(0, 15000)
 ax.spines['top'].set_visible(False)
 ax.spines['right'].set_visible(False)
 

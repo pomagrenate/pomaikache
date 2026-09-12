@@ -9,7 +9,7 @@
 
 **Pomaikache** is an ultra-low-latency, enterprise-grade in-memory **vector cache engine** written in pure C99/C11. Designed specifically for hyperscale AI vector search, real-time RAG (Retrieval-Augmented Generation) caching, and high-frequency vector similarity retrieval, Pomaikache delivers sub-microsecond vector operations by bypassing standard operating system overhead.
 
-By combining zero-copy **Linux `io_uring`** networking with a custom **64-byte aligned arena memory allocator (`palloc`)**, unrolled **AVX2 FMA SIMD intrinsics**, and an **$O(1)$ circular overwrite ring buffer**, Pomaikache achieves **3.85+ Million vector appends per second** with **zero heap fragmentation**.
+By combining zero-copy **Linux `io_uring`** networking with a custom **64-byte aligned arena memory allocator (`palloc`)**, unrolled **AVX2 FMA SIMD intrinsics**, and an **$O(1)$ circular overwrite ring buffer**, Pomaikache achieves **5.9+ Million vector appends per second** with **zero heap fragmentation**.
 
 ---
 
