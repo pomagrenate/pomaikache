@@ -1,0 +1,18 @@
+version: '3.8'
+
+services:
+  pomaikache:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pomaikache-server
+    ports:
+      - "9090:9090"
+    volumes:
+      - pomaikache-data:/app/data
+    restart: unless-stopped
+    command: ["--port", "9090", "--dim", "128", "--capacity", "10000"]
+
+volumes:
+  pomaikache-data:
+    driver: local
